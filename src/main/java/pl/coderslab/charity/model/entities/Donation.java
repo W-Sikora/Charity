@@ -13,8 +13,12 @@ public class Donation {
 
     private Integer quantity;
 
+    @OneToMany
+    @JoinColumn(name="category_id")
     private List<Category> categories;
 
+    @OneToOne
+    @JoinColumn(name = "institution_id", unique=true)
     private Institution institution;
     private String street;
     private String city;
