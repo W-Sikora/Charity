@@ -1,9 +1,12 @@
 package pl.coderslab.charity.controller;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import pl.coderslab.charity.model.entities.Donation;
 import pl.coderslab.charity.model.entities.Institution;
 import pl.coderslab.charity.model.repositories.CategoryRepository;
@@ -34,19 +37,10 @@ public class DonationController {
     }
 
     @RequestMapping(value = "/form", method = RequestMethod.POST)
-    public String processForm(HttpServletRequest request) {
-        Integer noOfDonation = donationRepository.findAll().size();
-        Donation donation = new Donation();
-//        donation.setInstitution((Institution) request.getParameter("institution"));
-//        donation.setStreet(request.getParameter("street"));
-//        donation.setCity(request.getParameter("city"));
-//        donation.setZipCode(request.getParameter("zipCode"));
-//        donation.setPickUpDate( request.getParameter("pickUpDate"));
-//        donation.setPickUpTime((LocalDateTime) request.getParameter(""));
-//        donation.setPhone(request.getParameter("phone"));
-//        donation.setPickUpComment(request.getParameter("comment"));
-        return "";
-
-
+    public String processForm(@RequestParam("pickUpDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime pickUpDate,
+                              @RequestParam("pickUpTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime pickUpTime,
+                              @ModelAttribute Donation donation) {
+        System.out.println(donation.toString());
+        return "redirect:/";
     }
 }
