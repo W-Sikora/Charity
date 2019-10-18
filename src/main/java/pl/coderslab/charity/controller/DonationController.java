@@ -37,10 +37,9 @@ public class DonationController {
     }
 
     @RequestMapping(value = "/form", method = RequestMethod.POST)
-    public String processForm(@RequestParam("pickUpDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime pickUpDate,
-                              @RequestParam("pickUpTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime pickUpTime,
-                              @ModelAttribute Donation donation) {
-        System.out.println(donation.toString());
+    public String processForm(@ModelAttribute Donation donation) {
+        Donation newDonation = donation;
+        System.out.println(newDonation.toString());
         return "redirect:/";
     }
 }

@@ -13,6 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Document</title>
     <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -79,7 +80,7 @@
                 <c:forEach items="${institutions}" var="institution">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <form:input name="organization" value="${institution.id}" path="institution"
+                            <form:radiobutton name="organization" value="${institution.id}" path="institution"
                                         id="institution"/>
                             <span class="checkbox radio"></span>
                             <span class="description">
@@ -145,11 +146,14 @@
                         <ul>
                             <li>
                                 <span class="icon icon-bag"></span>
-                                <span class="summary--text">${donations.quantity} ${donations.categories} ${donations.institution}</span>
+                                <span class="summary--text" id="quantity-summary"></span> worki
+                                <span class="summary--text" id="category-summary"></span>
                             </li>
                             <li>
                                 <span class="icon icon-hand"></span>
-                                <span class="summary--text">Dla fundacji "Mam marzenie" w Warszawie</span>
+                                <span class="summary--text" id="institution-summary">
+                                    Dla fundacji:
+                                </span>
                             </li>
                         </ul>
                     </div>
@@ -158,21 +162,21 @@
                         <div class="form-section--column">
                             <h4>Adres odbioru:</h4>
                             <ul>
-                                <li>${donations.street}</li>
-                                <li>${donations.city}</li>
-                                <li>${donations.zipCode}</li>
-                                <li>${donations.phone}</li>
+                                <li id="street-summary"></li>
+                                <li id="city-summary"></li>
+                                <li id="zipCode-summary"></li>
                             </ul>
                         </div>
 
                         <div class="form-section--column">
                             <h4>Termin odbioru:</h4>
                             <ul>
-                                <li>${donations.pickUpDate}</li>
-                                <li>${donations.pickUpTime}</li>
-                                <li>${donations.pickUpComment}</li>
+                                <li id="pickUpDate-summary"></li>
+                                <li id="pickUpTime-summary"> </li>
+                                <li id="pickUpComment-summary"></li>
                             </ul>
                         </div>
+
                     </div>
                 </div>
 
@@ -188,4 +192,3 @@
 <script src="<c:url value="/resources/js/app.js"/>"></script>
 </body>
 </html>
-
