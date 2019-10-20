@@ -6,15 +6,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import pl.coderslab.charity.model.entities.Donation;
-import pl.coderslab.charity.model.entities.Institution;
 import pl.coderslab.charity.model.repositories.CategoryRepository;
 import pl.coderslab.charity.model.repositories.DonationRepository;
 import pl.coderslab.charity.model.repositories.InstitutionRepository;
 
 import javax.servlet.http.HttpServletRequest;
-import java.time.LocalDateTime;
+import javax.validation.Valid;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 
 @Controller
 public class DonationController {
@@ -37,9 +38,8 @@ public class DonationController {
     }
 
     @RequestMapping(value = "/form", method = RequestMethod.POST)
-    public String processForm(@ModelAttribute Donation donation) {
-        Donation newDonation = donation;
-        System.out.println(newDonation.toString());
+    public String processForm(@ModelAttribute Donation newDonation) {
+        donationRepository.save(newDonation);
         return "redirect:/";
     }
 }

@@ -13,7 +13,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Document</title>
     <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -81,7 +80,7 @@
                     <div class="form-group form-group--checkbox">
                         <label>
                             <form:radiobutton name="organization" value="${institution.id}" path="institution"
-                                        id="institution"/>
+                                              data-name="${institution.name}" id="institution"/>
                             <span class="checkbox radio"></span>
                             <span class="description">
                                 <div class="title">"${institution.name}"</div>
@@ -118,15 +117,15 @@
                     <div class="form-section--column">
                         <h4>Termin odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Data <form:input path="pickUpDate" type="date"/> </label>
+                            <label> Data <form:input path="pickUpDate" type="date" id="pickUpDate"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Godzina <form:input path="pickUpTime" type="time"/> </label>
+                            <label> Godzina <form:input path="pickUpTime" type="time" id="pickUpTime"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Uwagi dla kuriera <form:textarea path="pickUpComment"/> </label>
+                            <label> Uwagi dla kuriera <form:textarea path="pickUpComment" id="pickUpComment"/> </label>
                         </div>
                     </div>
                 </div>
@@ -139,25 +138,23 @@
             <!-- STEP 6 -->
             <div data-step="5">
                 <h3>Podsumowanie Twojej darowizny</h3>
-
                 <div class="summary">
                     <div class="form-section">
                         <h4>Oddajesz:</h4>
                         <ul>
                             <li>
                                 <span class="icon icon-bag"></span>
-                                <span class="summary--text" id="quantity-summary"></span> worki
+                                <span class="summary--text" id="quantity-summary"></span>&nbsp;worki&nbsp;
                                 <span class="summary--text" id="category-summary"></span>
                             </li>
                             <li>
                                 <span class="icon icon-hand"></span>
                                 <span class="summary--text" id="institution-summary">
-                                    Dla fundacji:
+                                    Dla fundacji:&nbsp;
                                 </span>
                             </li>
                         </ul>
                     </div>
-
                     <div class="form-section form-section--columns">
                         <div class="form-section--column">
                             <h4>Adres odbioru:</h4>
@@ -167,7 +164,6 @@
                                 <li id="zipCode-summary"></li>
                             </ul>
                         </div>
-
                         <div class="form-section--column">
                             <h4>Termin odbioru:</h4>
                             <ul>
@@ -176,7 +172,6 @@
                                 <li id="pickUpComment-summary"></li>
                             </ul>
                         </div>
-
                     </div>
                 </div>
 

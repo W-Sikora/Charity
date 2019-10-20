@@ -4,12 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class RegistrationController {
-
-    @RequestMapping("/registration")
-    public String registration(){
-        return "register";
+public class LoginController {
+    @RequestMapping("/login")
+    public String login () {
+        return "login";
     }
-
-
 }

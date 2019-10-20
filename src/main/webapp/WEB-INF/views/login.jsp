@@ -6,6 +6,7 @@
 
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,22 +16,21 @@
 </head>
 <body>
 <c:import url="header.jsp"/>
+
 <section class="login-page">
-    <h2>Załóż konto</h2>
+    <h2>Zaloguj się</h2>
     <form>
         <div class="form-group">
-            <input type="email" name="email" placeholder="Email" />
+            <input type="email" name="email" placeholder="Email"/>
         </div>
         <div class="form-group">
-            <input type="password" name="password" placeholder="Hasło" />
-        </div>
-        <div class="form-group">
-            <input type="password" name="password2" placeholder="Powtórz hasło" />
+            <input type="password" name="password" placeholder="Hasło"/>
+            <a href="#" class="btn btn--small btn--without-border reset-password">Przypomnij hasło</a>
         </div>
 
         <div class="form-group form-group--buttons">
-            <a href="/login" class="btn btn--without-border">Zaloguj się</a>
-            <button class="btn" type="submit">Załóż konto</button>
+            <a href="/registration" class="btn btn--without-border">Załóż konto</a>
+            <button class="btn" type="submit">Zaloguj się</button>
         </div>
     </form>
 </section>

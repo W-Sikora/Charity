@@ -3,7 +3,8 @@ package pl.coderslab.charity.model.entities;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @Entity
@@ -26,10 +27,27 @@ public class Donation {
     private String city;
     private String zipCode;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDateTime pickUpDate;
-    private LocalDateTime pickUpTime;
+    private LocalDate pickUpDate;
+    @DateTimeFormat(pattern = "HH:mm")
+    private LocalTime pickUpTime;
     private String phone;
     private String pickUpComment;
+
+    public Donation() {
+    }
+
+    public Donation(Integer quantity, List<Category> categories, Institution institution, String street, String city, String zipCode, LocalDate pickUpDate, LocalTime pickUpTime, String phone, String pickUpComment) {
+        this.quantity = quantity;
+        this.categories = categories;
+        this.institution = institution;
+        this.street = street;
+        this.city = city;
+        this.zipCode = zipCode;
+        this.pickUpDate = pickUpDate;
+        this.pickUpTime = pickUpTime;
+        this.phone = phone;
+        this.pickUpComment = pickUpComment;
+    }
 
     public long getId() {
         return id;
@@ -87,19 +105,19 @@ public class Donation {
         this.zipCode = zipCode;
     }
 
-    public LocalDateTime getPickUpDate() {
+    public LocalDate getPickUpDate() {
         return pickUpDate;
     }
 
-    public void setPickUpDate(LocalDateTime pickUpDate) {
+    public void setPickUpDate(LocalDate pickUpDate) {
         this.pickUpDate = pickUpDate;
     }
 
-    public LocalDateTime getPickUpTime() {
+    public LocalTime getPickUpTime() {
         return pickUpTime;
     }
 
-    public void setPickUpTime(LocalDateTime pickUpTime) {
+    public void setPickUpTime(LocalTime pickUpTime) {
         this.pickUpTime = pickUpTime;
     }
 

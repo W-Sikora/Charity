@@ -166,15 +166,24 @@ document.addEventListener("DOMContentLoaded", function () {
             // TODO: get data from inputs and show them in summary
             if (this.currentStep === 5) {
 
-                let ids = ["quantity", "category", "institution", "street", "city", "zipCode", "phone",
-                    "pickUpDate", "pickUpTime", "pickUpComment"];
+                let ids = ["quantity", "category", "institution", "street", "city", "zipCode", "pickUpDate",
+                    "pickUpTime", "pickUpComment"];
 
                 let idsSummary = ["quantity-summary", "category-summary", "institution-summary", "street-summary",
-                    "city-summary", "zipCode-summary", "phone-summary", "pickUpDate-summary", "pickUpTime-summary",
+                    "city-summary", "zipCode-summary", "pickUpDate-summary", "pickUpTime-summary",
                     "pickUpComment-summary"];
 
                 for (let i = 0; i < ids.length; i++) {
-                    document.getElementById(idsSummary[i]).innerText += document.getElementById(ids[i]).value;
+                    if (i > 0 && i < 3) {
+                        document.getElementById(idsSummary[i]).innerText += document.getElementById(ids[i]).dataset.name
+                    } else if (i === 6) {
+                        let date = document.getElementById(ids[i]).value;
+                        let correctDate = date.split("-");
+                        document.getElementById(idsSummary[i]).innerText += correctDate[2] + "-" + correctDate[1] + "-"
+                            + correctDate[0];
+                    } else {
+                        document.getElementById(idsSummary[i]).innerText += document.getElementById(ids[i]).value
+                    }
                 }
             }
         }
