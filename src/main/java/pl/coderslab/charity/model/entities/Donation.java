@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,15 +14,10 @@ public class Donation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
     private Integer quantity;
-
-    @OneToMany
-    @JoinColumn(name="category_id")
+    @ManyToMany
     private List<Category> categories;
-
-    @OneToOne
-    @JoinColumn(name = "institution_id", unique=true)
+    @ManyToOne
     private Institution institution;
     private String street;
     private String city;
@@ -38,7 +34,7 @@ public class Donation {
 
     public Donation(Integer quantity, List<Category> categories, Institution institution, String street, String city, String zipCode, LocalDate pickUpDate, LocalTime pickUpTime, String phone, String pickUpComment) {
         this.quantity = quantity;
-        this.categories = categories;
+        this.categories = new ArrayList<Category>();
         this.institution = institution;
         this.street = street;
         this.city = city;

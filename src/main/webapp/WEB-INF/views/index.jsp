@@ -30,7 +30,7 @@
     </div>
 </section>
 <section class="steps">
-    <h2>Wystarczą 4 proste kroki</h2>
+    <h2 id="goingon">Wystarczą 4 proste kroki</h2>
     <div class="steps--container">
         <div class="steps--item">
             <span class="icon icon--hands"></span>
@@ -53,11 +53,11 @@
             <p>kurier przyjedzie w dogodnym terminie</p>
         </div>
     </div>
-    <a href="#" class="btn btn--large">Załóż konto</a>
+    <a href="<c:url value="/registration"/>" class="btn btn--large">Załóż konto</a>
 </section>
 <section class="about-us">
     <div class="about-us--text">
-        <h2>O nas</h2>
+        <h2 id="aboutus">O nas</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas vitae animi rem pariatur incidunt libero
             optio esse quisquam illo omnis.</p>
         <img src="<c:url value="/resources/images/signature.svg"/>" class="about-us--text-signature" alt="Signature"/>
@@ -66,7 +66,7 @@
     </div>
 </section>
 <section class="help">
-    <h2>Komu pomagamy?</h2>
+    <h2 id="foundations">Komu pomagamy?</h2>
     <!-- SLIDE 1 -->
     <div class="help--slides active" data-id="1">
         <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy.

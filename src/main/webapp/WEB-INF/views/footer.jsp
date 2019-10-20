@@ -9,7 +9,7 @@
 <body>
 <footer>
     <div class="contact">
-        <h2>Skontaktuj się z nami</h2>
+        <h2 id="contact">Skontaktuj się z nami</h2>
         <h3>Formularz kontaktowy</h3>
         <form class="form--contact">
             <div class="form-group form-group--50"><input type="text" name="name" placeholder="Imię"/></div>

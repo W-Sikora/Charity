@@ -179,7 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     } else if (i === 6) {
                         let date = document.getElementById(ids[i]).value;
                         let correctDate = date.split("-");
-                        document.getElementById(idsSummary[i]).innerText += correctDate[2] + "-" + correctDate[1] + "-"
+                        document.getElementById(idsSummary[i]).innerText += correctDate[2] + "." + correctDate[1] + "."
                             + correctDate[0];
                     } else {
                         document.getElementById(idsSummary[i]).innerText += document.getElementById(ids[i]).value

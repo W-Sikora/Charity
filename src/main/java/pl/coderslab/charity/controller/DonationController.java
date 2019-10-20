@@ -1,9 +1,7 @@
 package pl.coderslab.charity.controller;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pl.coderslab.charity.model.entities.Donation;
@@ -11,11 +9,7 @@ import pl.coderslab.charity.model.repositories.CategoryRepository;
 import pl.coderslab.charity.model.repositories.DonationRepository;
 import pl.coderslab.charity.model.repositories.InstitutionRepository;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 
 @Controller
 public class DonationController {
@@ -38,7 +32,7 @@ public class DonationController {
     }
 
     @RequestMapping(value = "/form", method = RequestMethod.POST)
-    public String processForm(@ModelAttribute Donation newDonation) {
+    public String processForm(@Valid Donation newDonation) {
         donationRepository.save(newDonation);
         return "redirect:/";
     }
