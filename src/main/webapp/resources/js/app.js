@@ -169,9 +169,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 let ids = ["quantity", "category", "institution", "street", "city", "zipCode", "pickUpDate",
                     "pickUpTime", "pickUpComment"];
 
-                let idsSummary = ["quantity-summary", "category-summary", "institution-summary", "street-summary",
-                    "city-summary", "zipCode-summary", "pickUpDate-summary", "pickUpTime-summary",
-                    "pickUpComment-summary"];
+                let idsSummary = [];
+
+                for(let i = 0; i < ids.length; i++) {
+                    idsSummary[i] = ids[i] + "-summary"
+                }
 
                 for (let i = 0; i < ids.length; i++) {
                     if (i > 0 && i < 3) {
