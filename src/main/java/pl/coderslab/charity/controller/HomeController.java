@@ -18,8 +18,8 @@ public class HomeController {
 
     @RequestMapping("/")
     public String homeAction(Model model){
-        model.addAttribute("noOfDonations", donationRepository.findAll().size());
-        model.addAttribute("noOfOrganizations", institutionRepository.findAll().size());
+        model.addAttribute("noOfDonations", donationRepository.noOfDonations());
+        model.addAttribute("noOfOrganizations", donationRepository.noOfSupportedInstitutions());
         model.addAttribute("institutions", institutionRepository.findAll());
         return "index";
     }
