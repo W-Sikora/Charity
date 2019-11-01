@@ -16,10 +16,10 @@
         <ul>
             <li><a href="<c:url value="/"/>" class="btn btn--without-border active">Start</a></li>
             <li><a href="<c:url value="/form"/>" class="btn btn--without-border">Formularz</a></li>
-            <li><a href="<c:url value="#goingon"/>" class="btn btn--without-border">O co chodzi?</a></li>
-            <li><a href="<c:url value="#aboutus"/>" class="btn btn--without-border">O nas</a></li>
-            <li><a href="<c:url value="#foundations"/>" class="btn btn--without-border">Fundacje i organizacje</a></li>
-            <li><a href="<c:url value="#contact"/>" class="btn btn--without-border">Kontakt</a></li>
+            <li><a href="<c:url value="/#goingon"/>" class="btn btn--without-border">O co chodzi?</a></li>
+            <li><a href="<c:url value="/#aboutus"/>" class="btn btn--without-border">O nas</a></li>
+            <li><a href="<c:url value="/#foundations"/>" class="btn btn--without-border">Fundacje i organizacje</a></li>
+            <li><a href="<c:url value="/#contact"/>" class="btn btn--without-border">Kontakt</a></li>
         </ul>
     </nav>
     <div class="slogan container container--90">
