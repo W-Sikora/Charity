@@ -8,19 +8,20 @@ import pl.coderslab.charity.model.repositories.InstitutionRepository;
 
 @Controller
 public class HomeController {
-    private DonationRepository donationRepository;
-    private InstitutionRepository institutionRepository;
+    private final DonationRepository donationRepository;
+    private final InstitutionRepository institutionRepository;
 
-    public HomeController(DonationRepository donationRepository, InstitutionRepository institutionRepository) {
+    public HomeController(DonationRepository donationRepository,
+                          InstitutionRepository institutionRepository) {
         this.donationRepository = donationRepository;
         this.institutionRepository = institutionRepository;
     }
 
     @RequestMapping("/")
-    public String homeAction(Model model){
-        model.addAttribute("noOfDonations", donationRepository.noOfDonations());
-        model.addAttribute("noOfOrganizations", donationRepository.noOfSupportedInstitutions());
-        model.addAttribute("institutions", institutionRepository.findAll());
+    public String homeAction(Model model) {
+        model.addAttribute("donationsNumber", donationRepository.noOfDonations())
+                .addAttribute("organizationsNumber", donationRepository.noOfSupportedInstitutions())
+                .addAttribute("institutions", institutionRepository.findAll());
         return "index";
     }
 

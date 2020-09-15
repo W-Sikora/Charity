@@ -7,49 +7,52 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "donations")
 public class Donation {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
+
     private Integer quantity;
+
     @ManyToMany
     private List<Category> categories;
+
     @ManyToOne
     private Institution institution;
+
     private String street;
+
     private String city;
+
+    @Column(name = "zip_code")
     private String zipCode;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "pick_up_date")
     private LocalDate pickUpDate;
+
     @DateTimeFormat(pattern = "HH:mm")
+    @Column(name = "pick_up_time")
     private LocalTime pickUpTime;
+
     private String phone;
+
+    @Column(name = "pick_up_comment")
     private String pickUpComment;
 
     public Donation() {
     }
 
-    public Donation(Integer quantity, List<Category> categories, Institution institution, String street, String city, String zipCode, LocalDate pickUpDate, LocalTime pickUpTime, String phone, String pickUpComment) {
-        this.quantity = quantity;
-        this.categories = new ArrayList<Category>();
-        this.institution = institution;
-        this.street = street;
-        this.city = city;
-        this.zipCode = zipCode;
-        this.pickUpDate = pickUpDate;
-        this.pickUpTime = pickUpTime;
-        this.phone = phone;
-        this.pickUpComment = pickUpComment;
-    }
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -148,5 +151,28 @@ public class Donation {
                 ", phone='" + phone + '\'' +
                 ", pickUpComment='" + pickUpComment + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Donation donation = (Donation) o;
+        return Objects.equals(id, donation.id) &&
+                Objects.equals(quantity, donation.quantity) &&
+                Objects.equals(categories, donation.categories) &&
+                Objects.equals(institution, donation.institution) &&
+                Objects.equals(street, donation.street) &&
+                Objects.equals(city, donation.city) &&
+                Objects.equals(zipCode, donation.zipCode) &&
+                Objects.equals(pickUpDate, donation.pickUpDate) &&
+                Objects.equals(pickUpTime, donation.pickUpTime) &&
+                Objects.equals(phone, donation.phone) &&
+                Objects.equals(pickUpComment, donation.pickUpComment);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, quantity, categories, institution, street, city, zipCode, pickUpDate, pickUpTime, phone, pickUpComment);
     }
 }

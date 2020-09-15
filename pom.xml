@@ -15,7 +15,7 @@
     <description>Charity project, created with love in CodersLab</description>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>11</java.version>
     </properties>
 
     <dependencies>
@@ -65,6 +65,13 @@
             <artifactId>spring-boot-starter-security</artifactId>
             <version>2.1.6.RELEASE</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>5.2.1.RELEASE</version>
+        </dependency>
+
     </dependencies>
 
     <build>

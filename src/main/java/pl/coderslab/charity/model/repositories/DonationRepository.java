@@ -6,10 +6,10 @@ import pl.coderslab.charity.model.entities.Donation;
 
 public interface DonationRepository extends JpaRepository<Donation, Long> {
 
-    @Query(nativeQuery = true, value = "select count(distinct institution_id) from donations")
-    Integer noOfSupportedInstitutions();
+    @Query(nativeQuery = true, value = "select coalesce (count(distinct institution_id), 0) from donations")
+    int noOfSupportedInstitutions();
 
-    @Query(nativeQuery = true, value = "select sum(quantity) from donations")
-    Integer noOfDonations();
+    @Query(nativeQuery = true, value = "select coalesce (sum(quantity), 0) from donations")
+    int noOfDonations();
 
 }

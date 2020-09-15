@@ -7,42 +7,48 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.sql.DataSource;
+import java.security.Security;
 
 @Configuration
-@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
-    private DataSource dataSource;
+    private final DataSource dataSource;
 
     public SecurityConfig(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+    public PasswordEncoder passwordEncoder() {
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication()
-                .passwordEncoder(passwordEncoder())
                 .dataSource(dataSource)
-                .usersByUsernameQuery("SELECT username, password, FROM users WHERE username = ?");
+                .passwordEncoder(passwordEncoder())
+                .usersByUsernameQuery("select email, password, enabled from users where email = ?")
+                .authoritiesByUsernameQuery("select email, 'ROLE_USER' from users where email = ?");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/register").permitAll()
-                .antMatchers("/form").permitAll()
-                .anyRequest().permitAll()
-                .and().formLogin().loginPage("/login").permitAll()
-                .and().logout().logoutSuccessUrl("/")
+                .antMatchers("/", "/resources/**", "/form/**", "/registration/**").permitAll()
+                .anyRequest().authenticated()
                 .and()
-                .csrf().disable();
+                .formLogin()
+                .loginProcessingUrl("/login")
+                .usernameParameter("email")
+                .defaultSuccessUrl("/form")
+                .loginPage("/login")
+                .and()
+                .logout()
+                .logoutSuccessUrl("/");
     }
+
 }

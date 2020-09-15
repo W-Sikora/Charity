@@ -13,11 +13,13 @@ import javax.validation.Valid;
 
 @Controller
 public class DonationController {
-    private DonationRepository donationRepository;
-    private InstitutionRepository institutionRepository;
-    private CategoryRepository categoryRepository;
+    private final DonationRepository donationRepository;
+    private final InstitutionRepository institutionRepository;
+    private final CategoryRepository categoryRepository;
 
-    public DonationController(DonationRepository donationRepository, InstitutionRepository institutionRepository, CategoryRepository categoryRepository) {
+    public DonationController(DonationRepository donationRepository,
+                              InstitutionRepository institutionRepository,
+                              CategoryRepository categoryRepository) {
         this.donationRepository = donationRepository;
         this.institutionRepository = institutionRepository;
         this.categoryRepository = categoryRepository;
@@ -25,9 +27,9 @@ public class DonationController {
 
     @RequestMapping("/form")
     public String form(Model model) {
-        model.addAttribute("donations", new Donation());
-        model.addAttribute("categories", categoryRepository.findAll());
-        model.addAttribute("institutions", institutionRepository.findAll());
+        model.addAttribute("donations", new Donation())
+                .addAttribute("categories", categoryRepository.findAll())
+                .addAttribute("institutions", institutionRepository.findAll());
         return "form";
     }
 
